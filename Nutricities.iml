@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-client:9.4.6.v20170531" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-servlet:9.4.6.v20170531" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-api:9.4.6.v20170531" level="project" />
+    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
   </component>
 </module>
