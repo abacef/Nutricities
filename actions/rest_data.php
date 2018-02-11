@@ -1,7 +1,7 @@
 <?php
 $ch = curl_init();
 
-$data = "Rochester, NY, USA";
+$data = $_POST['location'];
 $data = rawurlencode($data);
 
 $url = "https://developers.zomato.com/api/v2.1/cities?q=" . $data;
@@ -47,4 +47,4 @@ if (curl_errno($ch)) {
 curl_close ($ch);
 
 echo $result;
-?>  
+?>
