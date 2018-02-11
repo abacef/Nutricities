@@ -6,17 +6,23 @@ $(document).ready(function() {
  }
 
   google.maps.event.addDomListener(window, 'load', initialize);
-  //on click of 'Add' button on create transaction form, sends information
-  //to new_trans.php
-  //on success:
+  //disallow key press of enter in order to submit on city seleciton
+  $('#city-pick').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) {
+    e.preventDefault();
+    return false;
+  }
+});
+
   $("#submit").click(function() {
     console.log("Starts create");
     city = $("#citysearch").val();
     console.log(city)
-    /*$.ajax({
+    $.ajax({
       type: "POST",
-      url: "actions/new_trans.php",
-      data: "date=" + date + "&merchant=" + merchant + "&amt=" + amount + "&token=" + token,
+      url: "actions/rest_data.php",
+      data: "location=" + city,
       dataType: 'json',
       success: function(html) {
         alert("Transaction was created, please refresh page to view new"+

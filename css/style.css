@@ -1,1 +1,13 @@
+body{
+  background-color: #ffc100;
+  background-image:
+    radial-gradient(
+      circle at top right,
+      yellow,
+      #ff9a00 50%
+    );
+}
 
+#title {
+  font-family: 'Open Sans', sans-serif;
+}
