@@ -19,7 +19,7 @@ $(document).ready(function() {
     console.log("Starts create");
     city = $("#citysearch").val();
     console.log(city)
-    $.ajax({
+  /*  $.ajax({
       type: "POST",
       url: "actions/rest_data.php",
       data: "location=" + city,

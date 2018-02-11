@@ -1,4 +1,4 @@
-body{
+html{
   background-color: #ffc100;
   background-image:
     radial-gradient(
@@ -6,8 +6,68 @@ body{
       yellow,
       #ff9a00 50%
     );
+  height: 100%;
+  z-index: 1;
 }
 
 #title {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 13vw;
+  margin-bottom:  0px;
+  padding: 0px;
+}
+
+.title-a{
+  margin: 0 auto;
+  width: 75%;
+  margin-bottom:  0px;
+  padding: 0px;
+}
+
+#text{
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 5vw;
+  z-index: -1;
+}
+
+.eat{
+  margin-top: 5%;
+}
+
+#city-prompt{
+  margin: 0 auto;
+  width: 40%;
+
+}
+
+input[type=City] {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 5vw;
+    background-color: #c9c2c2;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+input[type=submit]:hover {
+    background-color: #dbdbdb;
+}
+
+#head{
   font-family: 'Open Sans', sans-serif;
 }
