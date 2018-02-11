@@ -1,8 +1,12 @@
 $(document).ready(function() {
+    $('#load').hide();
+  $('#error').hide();
+  $('#success').hide();
   function initialize() {
   var input = document.getElementById('citysearch');
   new google.maps.places.Autocomplete(input);
-  }
+ }
+
   google.maps.event.addDomListener(window, 'load', initialize);
   //disallow key press of enter in order to submit on city seleciton
   $('#city-pick').on('keyup keypress', function(e) {
@@ -15,28 +19,36 @@ $(document).ready(function() {
 
   $("#submit").click(function() {
     console.log("Starts create");
+    $('#city-prompt').hide();
+    $('#load').show();
     city = $("#citysearch").val();
     console.log(city)
-  /*  $.ajax({
+    $.ajax({
       type: "POST",
       url: "actions/rest_data.php",
       data: "location=" + city,
       dataType: 'json',
       success: function(html) {
-        alert("Transaction was created, please refresh page to view new"+
-        "transaction. If transaction is not found, please re-enter,"+
-        "fill all fields, and check date formatting.");
+        $('#load').hide();
+        console.log(html);
+
+        $('#sxs').append(html.restaurants[0].restaurant.location.city);
+        $('#success').show();
       },
       error: function(html) {
-        alert("Failed to create transaction. Please check that all information entered and entered with correct formatting.");
+        $('#load').hide();
+        console.log("Failure");
+        console.log(html);
+        $('#error').show();
+        setTimeout(function(){
+          $('#error').hide();
+          $('#city-prompt').show();
+        }, 3000);
+
       }
-    });*/
+    });
     return false;
   });
-
-
-});
-
 // will return the weight of the string
 function calc_weights(str, obj) {
   if (obj[str] == undefined) {
