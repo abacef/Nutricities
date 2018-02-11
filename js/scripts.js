@@ -1,7 +1,10 @@
-$(document).ready(function() {
-    $('#load').hide();
+$(document).ready(function(){
+  $('#load').hide();
   $('#error').hide();
   $('#success').hide();
+  var main_arr = [];
+  $('.right').hide();
+  $("#display").hide();
   function initialize() {
   var input = document.getElementById('citysearch');
   new google.maps.places.Autocomplete(input);
@@ -22,18 +25,20 @@ $(document).ready(function() {
     $('#city-prompt').hide();
     $('#load').show();
     city = $("#citysearch").val();
-    console.log(city)
+    console.log(city);
     $.ajax({
       type: "POST",
       url: "actions/rest_data.php",
       data: "location=" + city,
       dataType: 'json',
       success: function(html) {
+        var obj = load_table();
         $('#load').hide();
         console.log(html);
-
+        main_arr = get_data(html.restaurants, obj);
         $('#sxs').append(html.restaurants[0].restaurant.location.city);
         $('#success').show();
+        $('.right').show();
       },
       error: function(html) {
         $('#load').hide();
@@ -49,6 +54,18 @@ $(document).ready(function() {
     });
     return false;
   });
+
+  $(".right").click(function() {
+    console.log("movin on");
+    $("#mean_val").hide();
+    $("#whole2").hide();
+    $("#display").show();
+    $('#mean_val').append(main_arr[2]);
+    $("#mean_val").fadeIn(2000);
+    $('#spice').append(main_arr[0].restaurant.location.city);
+    $('#loss').append(main_arr[1].restaurant.name);
+    $('#W').append(main_arr[0].restaurant.name);
+    });
 // will return the weight of the string
 function calc_weights(str, obj) {
   if (obj[str] == undefined) {
@@ -93,7 +110,7 @@ function load_table() {
 	obj["Fast Food"] = 2;
 	obj["Fish and Chips"] = 3;
 	obj["French"] = 3;
-	obj["Frozen Yogurt"] = 2;
+	obj["Frozen Yogurt"] = 3;
 	obj["Fusion"] = 3;
 	obj["German"] = 4;
 	obj["Greek"] = 5;
@@ -123,7 +140,7 @@ function load_table() {
 	obj["Southern"] = 2;
 	obj["Southwestern"] = 3;
 	obj["Spanish"] = 5;
-	obj["Steak"] = 2;
+	obj["Steak"] = 3;
 	obj["Sushi"] = 7;
  	obj["Tapas"] = 5;
 	obj["Tea"] = 5;
@@ -135,3 +152,56 @@ function load_table() {
  	obj["Vietnamese"] = 3;
 	return obj;
 }
+
+function get_data(data, ref_table){
+    var arr = [];
+    var ct = 0;
+    var max = 0;
+    var min = 0;
+    var ct2 = 0;
+    for(i in data){
+      ct2++;
+      console.log(data[i].restaurant);
+      if(data[i].restaurant.cuisines.includes(",")){
+        var i2 = data[i].restaurant.cuisines.split(',');
+        i2 = i2[0].trim();
+      }
+      else{
+        i2 = data[i].restaurant.cuisines.trim();
+      }
+      if(ct2 == 1){
+        min = calc_weights(i2, ref_table);
+        arr[0] = data[i];
+        max = calc_weights(i2, ref_table);
+        arr[1] = data[i];
+
+      }
+    /*  for (k = 4; k >= 0; k--) {
+           if (calc_weights(i2, ref_table) > calc_weights(arr[k].restaurant.) {
+               if (i == 4) {
+                   arr[k] = data[i];
+               }
+               else{
+                   int temp = large[k];
+                   large[k] = data[i];
+                   large[k+1] = temp;
+               }
+           }
+       }*/
+      if(calc_weights(i2, ref_table) > max){
+        arr[0] = data[i];
+        max = calc_weights(i2, ref_table);
+      }
+
+      if(calc_weights(i2, ref_table) < min){
+        arr[1] = data[i];
+        min = calc_weights(i2, ref_table);
+      }
+      ct += calc_weights(i2, ref_table);
+    }
+    arr[2] = ct/ct2;
+    console.log(arr);
+    return arr;
+  }
+
+});
