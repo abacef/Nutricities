@@ -39,75 +39,159 @@ $(document).ready(function() {
 
 
 });
-function calc_weights() {
-	var arr = [1000];
-	arr[6] = 5;
-	arr[152] = 5;
-	arr[1] = 3;
-	arr[3] = 4;
-	arr[193] = 2;
-	arr[5] = 2;
-	arr[270] = 2;
-	arr[159] = 4;
-	arr[182] = 4;
-	arr[168] = 3;
-	arr[30] = 1;
-	arr[491] = 3;
-	arr[956] = 3;
-	arr[111] = 4;
-	arr[158] = 4;
-	arr[25] = 4;
-	arr[161] = 6;
-	arr[100] = 1;
-	arr[411] = 5;
-	arr[541] = 3;
-	arr[958] = 3;
-	arr[959] = 1;
-	arr[268] = 2;
-	arr[651] = 5;
-	arr[149] = 4;
-	arr[38] = 5;
-	arr[40] = 2;
-	arr[298] = 3;
-	arr[45] = 3;
-	arr[501] = 2;
-	arr[274] = 3;
-	arr[134] = 4;
-	arr[156] = 5;
-	arr[143] = 7;
-	arr[233] = 1;
-	arr[148] = 4;
-	arr[154] = 4;
-	arr[55] = 3;
-	arr[207] = 3;
-	arr[60] = 4;
-	arr[67] = 4;
-	arr[136] = 4;
-	arr[66] = 6;
-	arr[70] = 6;
-	arr[73] = 5;
-	arr[137] = 4;
-	arr[147] = 6;
-	arr[996] = 5;
-	arr[82] = 2;
-	arr[219] = 5;
-	arr[983] = 2;
-	arr[361] = 4;
-	arr[320] = 1;
-	arr[998] = 7;
-	arr[304] = 6;
-	arr[83] = 6;
-	arr[471] = 2;
-	arr[966] = 3;
-	arr[89] = 5;
-	arr[141] = 2;
-	arr[177] = 7;
-	arr[179] = 5;
-	arr[163] = 5;
-	arr[964] = 2;
-	arr[150] = 3;
-	arr[95] = 5;
-	arr[142] = 5;
-	arr[308] = 7;
-	arr[99] = 3;
+
+// will return the weight of the string
+function calc_weights(str, obj) {
+  if (obj[str] == undefined) {
+
+    return 3;
+
+  }
+  else {
+
+    return obj[str];
+
+  }
+}
+
+// loads a index based data structure and returns it
+function load_table() {
+	var obj = {};
+	obj["Afghani"] = 5;
+	obj["African"] = 5;
+
+	obj["American"] = 3;
+
+	obj["Asian"] = 4;
+
+	obj["BBQ"] = 2;
+	obj["Bakery"] = 2;
+
+	obj["Bar Food"] = 2;
+
+	obj["Beverages"] = 2;
+
+	obj["Brazilian"] = 4;
+
+	obj["Breakfast"] = 3;
+
+	obj["Burger"] = 3;
+
+	obj["Cafe"] = 1;
+
+	obj["Cajun"] = 3;
+
+	obj["California"] = 3;
+
+	obj["Cambodian"] = 4;
+
+	obj["Caribbean"] = 4;
+
+	obj["Chinese"] = 4;
+
+	obj["Coffee and Tea"] = 2;
+
+	obj["Deli"] = 6;
+
+	obj["Desserts"] = 1;
+
+	obj["Dim Sum"] = 5;
+	obj["Diner"] = 3;
+
+	obj["Dominican"] = 3;
+
+	obj["Donuts"] = 1;
+
+	obj["Drinks Only"] = 2;
+
+	obj["Eastern European"] = 5;
+
+	obj["Ethiopian"] = 4;
+
+	obj["European"] = 5;
+
+	obj["Fast Food"] = 2;
+
+	obj["Fish and Chips"] = 3;
+
+	obj["French"] = 3;
+
+	obj["Frozen Yogurt"] = 2;
+
+	obj["Fusion"] = 3;
+
+	obj["German"] = 4;
+
+	obj["Greek"] = 5;
+	obj["Healthy Food"] = 7;
+
+	obj["Ice Cream"] = 1;
+
+	obj["Indian"] = 4;
+
+	obj["International"] = 4;
+
+	obj["Italian"] = 3;
+
+	obj["Jamican"] = 3;
+
+	obj["Japanese"] = 4;
+
+	obj["Korean"] = 4;
+
+	obj["Latin American"] = 4;
+
+	obj["Lebanese"] = 6;
+
+	obj["Mediterranean"] = 6;
+
+	obj["Mexican"] = 5;
+
+	obj["Middle Eastern"] = 4;
+	obj["Moroccan"] = 6;
+
+	obj["New American"] = 5;
+
+	obj["Pizza"] = 2;
+
+	obj["Polish"] = 5;
+
+	obj["Pub Food"] = 2;
+
+	obj["Pureto Rican"] = 4;
+
+	obj["Ramen"] = 1;
+
+	obj["Salad"] = 7;
+
+	obj["Sandwich"] = 6;
+
+	obj["Seafood"] = 6;
+
+	obj["Southern"] = 2;
+
+	obj["Southwestern"] = 3;
+
+	obj["Spanish"] = 5;
+
+	obj["Steak"] = 2;
+
+	obj["Sushi"] = 7;
+
+ 	obj["Tapas"] = 5;
+
+	obj["Tea"] = 5;
+
+	obj["Teriyaki"] = 2;
+
+	obj["Tex-Mex"] = 3;
+
+	obj["Thai"] = 5;
+
+	obj["Turkish"] = 5;
+
+	obj["Vegetarian"] = 7;
+
+ 	obj["Vietnamese"] = 3;
+	return obj;
 }
