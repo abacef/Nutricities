@@ -25,5 +25,5 @@ gave us input validation that a city is actually a city.
 
 We used the Zomato API free trial to get seemingly endless amounts of
 information about restaurants in a specific city. We used the type of
-restaurant to rank a sampeling of 30 random restaurants from the city.
+restaurant to rank a sampling of 30 random restaurants from the city.
 In the future we will implement a better ranking system for health.
